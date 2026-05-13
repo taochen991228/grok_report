@@ -73,6 +73,7 @@ def build_context(list_id: str, list_dir: Path, config: dict[str, Any], generate
         "list": {
             "list_id": list_id,
             "name": config.get("name") or f"x_list_{list_id}",
+            "ai_output_heading": config.get("ai_output_heading") or config.get("name") or f"x_list_{list_id}",
             "category": config.get("category") or "uncategorized",
             "tags": config.get("tags") or [],
             "description": config.get("description") or "",
@@ -104,11 +105,12 @@ def main() -> int:
         "schema_version": "1.0",
         "generated_at": generated_at,
         "purpose": "AI-readable index of exported X list member datasets.",
-        "how_to_use": "Read lists[].ai_context_json first, then use each list.category/tags/source_url/member_count to classify results.",
+        "how_to_use": "Read lists[].ai_context_json first. Use list.ai_output_heading as the top-level heading when reporting results. Keep each list grouped separately by list_id.",
         "lists": [
             {
                 "list_id": context["list"]["list_id"],
                 "name": context["list"]["name"],
+                "ai_output_heading": context["list"]["ai_output_heading"],
                 "category": context["list"]["category"],
                 "tags": context["list"]["tags"],
                 "description": context["list"]["description"],
@@ -125,6 +127,7 @@ def main() -> int:
     all_lists = {
         "schema_version": "1.0",
         "generated_at": generated_at,
+        "reporting_rule": "When giving results, group by list.ai_output_heading as the top-level title. Do not merge accounts from different list_id values.",
         "lists": contexts,
     }
 

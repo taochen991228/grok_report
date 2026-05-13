@@ -1,15 +1,19 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-05-13T04:33:21+00:00",
+  "generated_at": "2026-05-13T04:37:07+00:00",
   "purpose": "AI-readable index of exported X list member datasets.",
-  "how_to_use": "Read lists[].ai_context_json first, then use each list.category/tags/source_url/member_count to classify results.",
+  "how_to_use": "Read lists[].ai_context_json first. Use list.ai_output_heading as the top-level heading when reporting results. Keep each list grouped separately by list_id.",
   "lists": [
     {
       "list_id": "2053094822601425075",
-      "name": "x_list_2053094822601425075",
-      "category": "uncategorized",
-      "tags": [],
-      "description": "",
+      "name": "ash-每日重要信息",
+      "ai_output_heading": "ash-每日重要信息",
+      "category": "ash-每日重要信息",
+      "tags": [
+        "ash",
+        "每日重要信息"
+      ],
+      "description": "ash-每日重要信息",
       "source_url": "https://x.com/i/lists/2053094822601425075",
       "member_count": 15,
       "ai_context_json": "data/exports/lists/x_list_2053094822601425075/ai_context.json",
@@ -18,10 +22,14 @@
     },
     {
       "list_id": "2053756758662033590",
-      "name": "x_list_2053756758662033590",
-      "category": "uncategorized",
-      "tags": [],
-      "description": "",
+      "name": "陶辰-消息kol",
+      "ai_output_heading": "陶辰-消息kol",
+      "category": "陶辰-消息kol",
+      "tags": [
+        "消息",
+        "kol"
+      ],
+      "description": "陶辰-消息kol",
       "source_url": "https://x.com/i/lists/2053756758662033590",
       "member_count": 21,
       "ai_context_json": "data/exports/lists/x_list_2053756758662033590/ai_context.json",

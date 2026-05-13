@@ -2,18 +2,26 @@
   "lists": [
     {
       "list_id": "2053756758662033590",
-      "name": "x_list_2053756758662033590",
-      "category": "uncategorized",
-      "tags": [],
-      "description": "",
+      "name": "陶辰-消息kol",
+      "category": "陶辰-消息kol",
+      "tags": [
+        "消息",
+        "kol"
+      ],
+      "description": "陶辰-消息kol",
+      "ai_output_heading": "陶辰-消息kol",
       "source_url": "https://x.com/i/lists/2053756758662033590"
     },
     {
       "list_id": "2053094822601425075",
-      "name": "x_list_2053094822601425075",
-      "category": "uncategorized",
-      "tags": [],
-      "description": "",
+      "name": "ash-每日重要信息",
+      "category": "ash-每日重要信息",
+      "tags": [
+        "ash",
+        "每日重要信息"
+      ],
+      "description": "ash-每日重要信息",
+      "ai_output_heading": "ash-每日重要信息",
       "source_url": "https://x.com/i/lists/2053094822601425075"
     }
   ]
