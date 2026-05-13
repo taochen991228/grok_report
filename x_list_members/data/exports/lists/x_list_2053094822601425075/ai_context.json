@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-05-13T04:40:13+00:00",
+  "generated_at": "2026-05-13T04:41:25+00:00",
   "list": {
     "list_id": "2053094822601425075",
     "name": "ash-每日重要信息",
@@ -20,23 +20,6 @@
     "members_handles": "data/exports/lists/x_list_2053094822601425075/members_handles.json"
   },
   "member_count": 15,
-  "member_uids": [
-    "1895005913964257280",
-    "1870802821244739585",
-    "1869344314314436608",
-    "1858198810226499584",
-    "1781365222193655808",
-    "1774099089636167680",
-    "1761401795916767232",
-    "1687286859876237312",
-    "1565289526729252875",
-    "1461650068075806722",
-    "1441398385022361600",
-    "1420805364279218177",
-    "1398626069817618434",
-    "1080717364151402502",
-    "786662054"
-  ],
   "handles": [
     "@juesaiquan",
     "@zzc_ae",
@@ -53,82 +36,5 @@
     "@ChinaWeb3",
     "@798_eth",
     "@aiqiang888"
-  ],
-  "members": [
-    {
-      "uid": "1895005913964257280",
-      "handle": "@juesaiquan",
-      "url": "https://x.com/juesaiquan"
-    },
-    {
-      "uid": "1870802821244739585",
-      "handle": "@zzc_ae",
-      "url": "https://x.com/zzc_ae"
-    },
-    {
-      "uid": "1869344314314436608",
-      "handle": "@Mojito_cx",
-      "url": "https://x.com/Mojito_cx"
-    },
-    {
-      "uid": "1858198810226499584",
-      "handle": "@Feng_btc",
-      "url": "https://x.com/Feng_btc"
-    },
-    {
-      "uid": "1781365222193655808",
-      "handle": "@2568hgg",
-      "url": "https://x.com/2568hgg"
-    },
-    {
-      "uid": "1774099089636167680",
-      "handle": "@YL20020628",
-      "url": "https://x.com/YL20020628"
-    },
-    {
-      "uid": "1761401795916767232",
-      "handle": "@frankyleon725",
-      "url": "https://x.com/frankyleon725"
-    },
-    {
-      "uid": "1687286859876237312",
-      "handle": "@Rocky_Eths",
-      "url": "https://x.com/Rocky_Eths"
-    },
-    {
-      "uid": "1565289526729252875",
-      "handle": "@qntnghn1",
-      "url": "https://x.com/qntnghn1"
-    },
-    {
-      "uid": "1461650068075806722",
-      "handle": "@Reboottttttt",
-      "url": "https://x.com/Reboottttttt"
-    },
-    {
-      "uid": "1441398385022361600",
-      "handle": "@LawrenceEros",
-      "url": "https://x.com/LawrenceEros"
-    },
-    {
-      "uid": "1420805364279218177",
-      "handle": "@u9_BlockChain",
-      "url": "https://x.com/u9_BlockChain"
-    },
-    {
-      "uid": "1398626069817618434",
-      "handle": "@ChinaWeb3",
-      "url": "https://x.com/ChinaWeb3"
-    },
-    {
-      "uid": "1080717364151402502",
-      "handle": "@798_eth",
-      "url": "https://x.com/798_eth"
-    },
-    {
-      "uid": "786662054",
-      "handle": "@aiqiang888",
-      "url": "https://x.com/aiqiang888"
-    }
   ]
 }

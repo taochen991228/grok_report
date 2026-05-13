@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-05-13T04:40:13+00:00",
+  "generated_at": "2026-05-13T04:41:25+00:00",
   "list": {
     "list_id": "2053756758662033590",
     "name": "陶辰-消息kol",
@@ -20,29 +20,6 @@
     "members_handles": "data/exports/lists/x_list_2053756758662033590/members_handles.json"
   },
   "member_count": 21,
-  "member_uids": [
-    "1892868658126352384",
-    "1878971964989288448",
-    "1797624247164215297",
-    "1763274381869158404",
-    "1704780493546475520",
-    "1698491406006845440",
-    "1655562317663453184",
-    "1635481614544424960",
-    "1568586084224827392",
-    "1567852914605182977",
-    "1565289526729252875",
-    "1530517051491725318",
-    "1464198545037312029",
-    "1463747591770828801",
-    "1461650068075806722",
-    "1291746029230989312",
-    "1265524157191725063",
-    "1080717364151402502",
-    "4268069774",
-    "520227612",
-    "369732811"
-  ],
   "handles": [
     "@Yuui_732",
     "@deghnl6",
@@ -65,112 +42,5 @@
     "@JettHuu",
     "@kaimacam",
     "@congge918"
-  ],
-  "members": [
-    {
-      "uid": "1892868658126352384",
-      "handle": "@Yuui_732",
-      "url": "https://x.com/Yuui_732"
-    },
-    {
-      "uid": "1878971964989288448",
-      "handle": "@deghnl6",
-      "url": "https://x.com/deghnl6"
-    },
-    {
-      "uid": "1797624247164215297",
-      "handle": "@0xfrank0814",
-      "url": "https://x.com/0xfrank0814"
-    },
-    {
-      "uid": "1763274381869158404",
-      "handle": "@zaijin338191",
-      "url": "https://x.com/zaijin338191"
-    },
-    {
-      "uid": "1704780493546475520",
-      "handle": "@0xJarr",
-      "url": "https://x.com/0xJarr"
-    },
-    {
-      "uid": "1698491406006845440",
-      "handle": "@luyuban69",
-      "url": "https://x.com/luyuban69"
-    },
-    {
-      "uid": "1655562317663453184",
-      "handle": "@mmx709575609",
-      "url": "https://x.com/mmx709575609"
-    },
-    {
-      "uid": "1635481614544424960",
-      "handle": "@zizhong999",
-      "url": "https://x.com/zizhong999"
-    },
-    {
-      "uid": "1568586084224827392",
-      "handle": "@Mrwick8848",
-      "url": "https://x.com/Mrwick8848"
-    },
-    {
-      "uid": "1567852914605182977",
-      "handle": "@WY_mask",
-      "url": "https://x.com/WY_mask"
-    },
-    {
-      "uid": "1565289526729252875",
-      "handle": "@qntnghn1",
-      "url": "https://x.com/qntnghn1"
-    },
-    {
-      "uid": "1530517051491725318",
-      "handle": "@Bingzieryi",
-      "url": "https://x.com/Bingzieryi"
-    },
-    {
-      "uid": "1464198545037312029",
-      "handle": "@dami16z",
-      "url": "https://x.com/dami16z"
-    },
-    {
-      "uid": "1463747591770828801",
-      "handle": "@quxiansheng66",
-      "url": "https://x.com/quxiansheng66"
-    },
-    {
-      "uid": "1461650068075806722",
-      "handle": "@Reboottttttt",
-      "url": "https://x.com/Reboottttttt"
-    },
-    {
-      "uid": "1291746029230989312",
-      "handle": "@kikiviell",
-      "url": "https://x.com/kikiviell"
-    },
-    {
-      "uid": "1265524157191725063",
-      "handle": "@0xkyne",
-      "url": "https://x.com/0xkyne"
-    },
-    {
-      "uid": "1080717364151402502",
-      "handle": "@798_eth",
-      "url": "https://x.com/798_eth"
-    },
-    {
-      "uid": "4268069774",
-      "handle": "@JettHuu",
-      "url": "https://x.com/JettHuu"
-    },
-    {
-      "uid": "520227612",
-      "handle": "@kaimacam",
-      "url": "https://x.com/kaimacam"
-    },
-    {
-      "uid": "369732811",
-      "handle": "@congge918",
-      "url": "https://x.com/congge918"
-    }
   ]
 }

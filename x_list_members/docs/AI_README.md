@@ -37,11 +37,9 @@ Each list object contains:
 - `list.tags`: owner-defined tags.
 - `list.source_url`: original X list URL.
 - `member_count`: number of extracted members.
-- `member_uids`: simple X user ID array.
-- `handles`: simple `@username` array for display only.
-- `members`: compact member objects with `uid`, `handle`, and `url`.
+- `handles`: primary `@username` array for matching, counting, and classification.
 
-Full profile details are intentionally not included in `ai_all_lists.json`. Read `members_full.json` only when profile descriptions or metrics are explicitly needed.
+UIDs, profile descriptions, metrics, and URLs are intentionally not included in `ai_all_lists.json`. Read `members_full.json` only when those details are explicitly needed.
 
 ## Classification Rule
 
@@ -50,7 +48,7 @@ When classifying AI results:
 1. Use `list.list_id` as the stable primary key.
 2. Use `list.ai_output_heading` as the top-level heading in final output.
 3. Use `list.category` and `list.tags` as grouping hints inside that heading.
-4. Use `member_uids` or `members[].uid` for statistics.
+4. Use `handles` for statistics and matching.
 5. Keep output grouped by `list_id` so results from different lists do not merge accidentally.
 
 Current top-level headings:

@@ -132,15 +132,14 @@ It includes all lists, each with:
 - `list.ai_output_heading`
 - `list.source_url`
 - `member_count`
-- `member_uids`
 - `handles`
-- compact `members` with `uid`, `handle`, `url`
 
 AI output rule:
 
 ```text
 Use list.ai_output_heading as the top-level title.
 Do not merge different list_id values.
+Use handles as the primary member field.
 ```
 
 `ai_lists_index.json` and per-list `ai_context.json` are still available, but `ai_all_lists.json` is the recommended entrypoint.
