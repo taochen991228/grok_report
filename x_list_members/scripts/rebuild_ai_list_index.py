@@ -138,7 +138,14 @@ def main() -> int:
     all_lists = {
         "schema_version": "1.0",
         "generated_at": generated_at,
+        "recommended_entrypoint": True,
+        "purpose": "Single-file AI-readable dataset containing all tracked X lists and compact member identity fields.",
         "reporting_rule": "When giving results, group by list.ai_output_heading as the top-level title. Do not merge accounts from different list_id values.",
+        "member_fields": {
+            "uid": "X/Twitter numeric user id",
+            "handle": "X/Twitter @username for display",
+            "url": "X profile URL"
+        },
         "lists": contexts,
     }
 

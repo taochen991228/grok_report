@@ -120,28 +120,30 @@ https://github.com/taochen991228/grok_report/blob/main/x_list_members/data/expor
 
 ## AI Readable Files
 
-When another AI needs to classify or distinguish lists, start from this index:
+When another AI needs to classify or distinguish lists, use this one-file dataset:
 
 ```text
-https://github.com/taochen991228/grok_report/blob/main/x_list_members/data/exports/ai_lists_index.json
+https://github.com/taochen991228/grok_report/blob/main/x_list_members/data/exports/ai_all_lists.json
 ```
 
-Each list also has its own context file:
-
-```text
-https://github.com/taochen991228/grok_report/blob/main/x_list_members/data/exports/lists/x_list_<list_id>/ai_context.json
-```
-
-The context file includes:
+It includes all lists, each with:
 
 - `list.list_id`
-- `list.name`
-- `list.category`
-- `list.tags`
+- `list.ai_output_heading`
 - `list.source_url`
 - `member_count`
+- `member_uids`
 - `handles`
-- `members`
+- compact `members` with `uid`, `handle`, `url`
+
+AI output rule:
+
+```text
+Use list.ai_output_heading as the top-level title.
+Do not merge different list_id values.
+```
+
+`ai_lists_index.json` and per-list `ai_context.json` are still available, but `ai_all_lists.json` is the recommended entrypoint.
 
 Edit list names/categories/tags in:
 

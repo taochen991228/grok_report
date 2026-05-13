@@ -4,29 +4,31 @@ Use this file when another AI needs to read and classify exported X list members
 
 ## Start Here
 
-Read the index first:
+For most AI workflows, read this one file:
 
 ```text
-data/exports/ai_lists_index.json
+data/exports/ai_all_lists.json
 ```
 
 GitHub URL:
 
 ```text
-https://github.com/taochen991228/grok_report/blob/main/x_list_members/data/exports/ai_lists_index.json
+https://github.com/taochen991228/grok_report/blob/main/x_list_members/data/exports/ai_all_lists.json
 ```
 
-The index tells you which lists exist and where each list's context file lives.
+This file includes all list metadata and compact members in one place.
 
-## Per-List Context
+## Optional Index
 
-Each list has:
+Use the index only if you want to discover list files without loading all members:
 
 ```text
-data/exports/lists/x_list_<list_id>/ai_context.json
+data/exports/ai_lists_index.json
 ```
 
-This is the preferred file for classification. It contains:
+## Data Fields
+
+Each list object contains:
 
 - `list.list_id`: unique X list ID.
 - `list.name`: human readable list name.
@@ -39,7 +41,7 @@ This is the preferred file for classification. It contains:
 - `handles`: simple `@username` array for display only.
 - `members`: compact member objects with `uid`, `handle`, and `url`.
 
-Full profile details are intentionally not included in `ai_context.json`. Read `members_full.json` only when profile descriptions or metrics are explicitly needed.
+Full profile details are intentionally not included in `ai_all_lists.json`. Read `members_full.json` only when profile descriptions or metrics are explicitly needed.
 
 ## Classification Rule
 

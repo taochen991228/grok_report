@@ -1,11 +1,18 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-05-13T04:38:34+00:00",
+  "generated_at": "2026-05-13T04:40:13+00:00",
+  "recommended_entrypoint": true,
+  "purpose": "Single-file AI-readable dataset containing all tracked X lists and compact member identity fields.",
   "reporting_rule": "When giving results, group by list.ai_output_heading as the top-level title. Do not merge accounts from different list_id values.",
+  "member_fields": {
+    "uid": "X/Twitter numeric user id",
+    "handle": "X/Twitter @username for display",
+    "url": "X profile URL"
+  },
   "lists": [
     {
       "schema_version": "1.0",
-      "generated_at": "2026-05-13T04:38:34+00:00",
+      "generated_at": "2026-05-13T04:40:13+00:00",
       "list": {
         "list_id": "2053094822601425075",
         "name": "ash-每日重要信息",
@@ -139,7 +146,7 @@
     },
     {
       "schema_version": "1.0",
-      "generated_at": "2026-05-13T04:38:34+00:00",
+      "generated_at": "2026-05-13T04:40:13+00:00",
       "list": {
         "list_id": "2053756758662033590",
         "name": "陶辰-消息kol",
