@@ -64,7 +64,17 @@ def discover_list_dirs() -> list[tuple[str, Path]]:
 def build_context(list_id: str, list_dir: Path, config: dict[str, Any], generated_at: str) -> dict[str, Any]:
     handles = load_json(list_dir / "recommended_members.json", [])
     full = load_json(list_dir / "members_full.json", {})
-    members = full.get("members", []) if isinstance(full, dict) else []
+    full_members = full.get("members", []) if isinstance(full, dict) else []
+    members = [
+        {
+            "uid": str(member.get("id") or ""),
+            "handle": f"@{member.get('screen_name')}" if member.get("screen_name") else "",
+            "url": member.get("url") or "",
+        }
+        for member in full_members
+        if isinstance(member, dict) and member.get("id")
+    ]
+    member_uids = [member["uid"] for member in members]
     source_url = config.get("source_url") or f"https://x.com/i/lists/{list_id}"
 
     return {
@@ -86,6 +96,7 @@ def build_context(list_id: str, list_dir: Path, config: dict[str, Any], generate
             "members_handles": f"data/exports/lists/x_list_{list_id}/members_handles.json",
         },
         "member_count": len(handles),
+        "member_uids": member_uids,
         "handles": handles,
         "members": members,
     }
@@ -105,7 +116,7 @@ def main() -> int:
         "schema_version": "1.0",
         "generated_at": generated_at,
         "purpose": "AI-readable index of exported X list member datasets.",
-        "how_to_use": "Read lists[].ai_context_json first. Use list.ai_output_heading as the top-level heading when reporting results. Keep each list grouped separately by list_id.",
+        "how_to_use": "Read lists[].ai_context_json first. Use list.ai_output_heading as the top-level heading when reporting results. For classification/statistics, use member_uids or members[].uid. Read members_full_json only when profile details are explicitly needed.",
         "lists": [
             {
                 "list_id": context["list"]["list_id"],
