@@ -115,11 +115,14 @@ try {
     $filesToUpload = @(
         "README.md",
         ".gitignore",
+        "config\lists.json",
         "config\x_headers.example.json",
+        "docs\AI_README.md",
         "docs\GITHUB_UPLOAD_ARCHITECTURE.md",
         "scripts\extract_x_list_members.py",
         "scripts\fetch_x_list_members_api.py",
         "scripts\fetch_x_list_members.py",
+        "scripts\rebuild_ai_list_index.py",
         "scripts\update_list_and_publish.ps1",
         "scripts\sync_to_github.ps1"
     )

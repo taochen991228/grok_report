@@ -50,10 +50,13 @@ try {
         python .\scripts\fetch_x_list_members.py $List --headers-file $HeadersFile --count $Count --max-pages $MaxPages --sleep $Sleep
     }
 
+    python .\scripts\rebuild_ai_list_index.py
     powershell.exe -ExecutionPolicy Bypass -File .\scripts\sync_to_github.ps1 -CommitMessage $CommitMessage
 
     Write-Host "Updated fixed GitHub link:"
     Write-Host "https://github.com/taochen991228/grok_report/blob/main/x_list_members/data/exports/recommended_members.json"
+    Write-Host "Updated AI list index:"
+    Write-Host "https://github.com/taochen991228/grok_report/blob/main/x_list_members/data/exports/ai_lists_index.json"
 }
 finally {
     Pop-Location

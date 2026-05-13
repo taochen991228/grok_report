@@ -118,6 +118,49 @@ For multiple lists, prefer the list-specific GitHub path:
 https://github.com/taochen991228/grok_report/blob/main/x_list_members/data/exports/lists/x_list_<list_id>/recommended_members.json
 ```
 
+## AI Readable Files
+
+When another AI needs to classify or distinguish lists, start from this index:
+
+```text
+https://github.com/taochen991228/grok_report/blob/main/x_list_members/data/exports/ai_lists_index.json
+```
+
+Each list also has its own context file:
+
+```text
+https://github.com/taochen991228/grok_report/blob/main/x_list_members/data/exports/lists/x_list_<list_id>/ai_context.json
+```
+
+The context file includes:
+
+- `list.list_id`
+- `list.name`
+- `list.category`
+- `list.tags`
+- `list.source_url`
+- `member_count`
+- `handles`
+- `members`
+
+Edit list names/categories/tags in:
+
+```text
+config\lists.json
+```
+
+Then rebuild the AI index:
+
+```powershell
+python .\scripts\rebuild_ai_list_index.py
+```
+
+Detailed AI reading guide:
+
+```text
+docs\AI_README.md
+```
+
 ## Update Fixed GitHub Link
 
 This is the main workflow when you want this GitHub link to always show the latest members:
