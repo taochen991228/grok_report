@@ -1,0 +1,5 @@
+{
+  "cookie": "paste your x.com cookie here",
+  "x-csrf-token": "paste ct0 value here, or leave empty if ct0 is already in cookie",
+  "authorization": "Bearer AAAAAAAAAAAAAAAAAAAAANRILgAAAAAAnNwIzUejRCOuH5E6I8xnZz4puTs%3D1Zv7ttfk8LF81IUq16cHjhLTvJu4FA33AGWWjCpTnA"
+}

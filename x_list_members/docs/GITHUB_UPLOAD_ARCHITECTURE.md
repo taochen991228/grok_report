@@ -17,9 +17,13 @@ Inside the GitHub repository, keep this project under one folder:
 ```text
 grok_report/
   x_list_members/
+    .gitignore
     README.md
+    config/
+      x_headers.example.json
     scripts/
       extract_x_list_members.py
+      fetch_x_list_members.py
       sync_to_github.ps1
     data/
       raw/

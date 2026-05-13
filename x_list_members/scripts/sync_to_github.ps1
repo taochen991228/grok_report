@@ -95,8 +95,11 @@ try {
 
     $filesToUpload = @(
         "README.md",
+        ".gitignore",
+        "config\x_headers.example.json",
         "docs\GITHUB_UPLOAD_ARCHITECTURE.md",
         "scripts\extract_x_list_members.py",
+        "scripts\fetch_x_list_members.py",
         "scripts\sync_to_github.ps1",
         "data\raw\x_list_2053756758662033590_members_response.json",
         "data\exports\recommended_members.json",
