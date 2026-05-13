@@ -19,6 +19,7 @@ EXPORT_DIR = Path("data/exports")
 LISTS_DIR = EXPORT_DIR / "lists"
 LIST_CONFIG = Path("config/lists.json")
 LIST_DIR_PATTERN = re.compile(r"^x_list_(\d+)$")
+SAFE_FILENAME_PATTERN = re.compile(r'[<>:"/\\|?*\x00-\x1f]')
 
 
 def load_json(path: Path, default: Any) -> Any:
@@ -31,6 +32,21 @@ def write_json(path: Path, payload: Any) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print(f"Wrote {path}")
+
+
+def safe_filename(value: str) -> str:
+    value = SAFE_FILENAME_PATTERN.sub("_", value.strip())
+    value = re.sub(r"\s+", "_", value)
+    return value.strip("._ ") or "unnamed"
+
+
+def clear_named_member_exports() -> None:
+    if not EXPORT_DIR.exists():
+        return
+    for path in EXPORT_DIR.glob("*_members.json"):
+        if path.name.startswith("x_list_"):
+            continue
+        path.unlink()
 
 
 def load_list_config() -> dict[str, dict[str, Any]]:
@@ -84,6 +100,10 @@ def main() -> int:
 
     write_json(EXPORT_DIR / "ai_lists_index.json", all_lists)
     write_json(EXPORT_DIR / "ai_all_lists.json", all_lists)
+    clear_named_member_exports()
+    for context in contexts:
+        filename = f"{context['list_id']}_{safe_filename(context['name'])}_members.json"
+        write_json(EXPORT_DIR / filename, context["handles"])
     print(f"Indexed {len(contexts)} lists")
     return 0
 
