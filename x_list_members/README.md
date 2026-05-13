@@ -45,6 +45,35 @@ Output:
 ]
 ```
 
+## Auto Fetch List Members
+
+Create a local credentials file first:
+
+```powershell
+Copy-Item .\config\x_headers.example.json .\config\x_headers.json
+```
+
+Open `config\x_headers.json`, then paste your `x.com` cookie. The file is ignored by git.
+
+Fetch members from a list:
+
+```powershell
+python .\scripts\fetch_x_list_members.py 2053756758662033590 --headers-file .\config\x_headers.json
+```
+
+Fetch more carefully with smaller pages:
+
+```powershell
+python .\scripts\fetch_x_list_members.py 2053756758662033590 --headers-file .\config\x_headers.json --count 20 --sleep 2
+```
+
+The fetch script writes:
+
+- `data\raw\x_list_<list_id>_members_pages.json`
+- `data\exports\recommended_members.json`
+- `data\exports\x_list_<list_id>_members_handles.json`
+- `data\exports\x_list_<list_id>_members_full.json`
+
 ## Other Commands
 
 Export all formats:
