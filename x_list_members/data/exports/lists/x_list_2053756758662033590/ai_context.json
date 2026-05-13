@@ -1,25 +1,6 @@
 {
-  "schema_version": "1.0",
-  "generated_at": "2026-05-13T04:41:25+00:00",
-  "list": {
-    "list_id": "2053756758662033590",
-    "name": "陶辰-消息kol",
-    "ai_output_heading": "陶辰-消息kol",
-    "category": "陶辰-消息kol",
-    "tags": [
-      "消息",
-      "kol"
-    ],
-    "description": "陶辰-消息kol",
-    "source_url": "https://x.com/i/lists/2053756758662033590",
-    "github_dir": "x_list_members/data/exports/lists/x_list_2053756758662033590"
-  },
-  "outputs": {
-    "recommended_members": "data/exports/lists/x_list_2053756758662033590/recommended_members.json",
-    "members_full": "data/exports/lists/x_list_2053756758662033590/members_full.json",
-    "members_handles": "data/exports/lists/x_list_2053756758662033590/members_handles.json"
-  },
-  "member_count": 21,
+  "list_id": "2053756758662033590",
+  "name": "陶辰-消息kol",
   "handles": [
     "@Yuui_732",
     "@deghnl6",

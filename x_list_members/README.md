@@ -128,21 +128,19 @@ https://github.com/taochen991228/grok_report/blob/main/x_list_members/data/expor
 
 It includes all lists, each with:
 
-- `list.list_id`
-- `list.ai_output_heading`
-- `list.source_url`
-- `member_count`
+- `list_id`
+- `name`
 - `handles`
 
 AI output rule:
 
 ```text
-Use list.ai_output_heading as the top-level title.
+Use name as the top-level title.
 Do not merge different list_id values.
-Use handles as the primary member field.
+Use handles as the member list.
 ```
 
-`ai_lists_index.json` and per-list `ai_context.json` are still available, but `ai_all_lists.json` is the recommended entrypoint.
+`ai_all_lists.json` is the recommended entrypoint.
 
 Edit list names/categories/tags in:
 

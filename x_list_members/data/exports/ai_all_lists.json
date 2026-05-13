@@ -1,35 +1,8 @@
 {
-  "schema_version": "1.0",
-  "generated_at": "2026-05-13T04:41:25+00:00",
-  "recommended_entrypoint": true,
-  "purpose": "Single-file AI-readable dataset containing all tracked X lists and handle arrays.",
-  "reporting_rule": "When giving results, group by list.ai_output_heading as the top-level title. Do not merge accounts from different list_id values.",
-  "member_fields": {
-    "handles": "Primary field. X/Twitter @username array used for matching, counting, and classification."
-  },
   "lists": [
     {
-      "schema_version": "1.0",
-      "generated_at": "2026-05-13T04:41:25+00:00",
-      "list": {
-        "list_id": "2053094822601425075",
-        "name": "ash-每日重要信息",
-        "ai_output_heading": "ash-每日重要信息",
-        "category": "ash-每日重要信息",
-        "tags": [
-          "ash",
-          "每日重要信息"
-        ],
-        "description": "ash-每日重要信息",
-        "source_url": "https://x.com/i/lists/2053094822601425075",
-        "github_dir": "x_list_members/data/exports/lists/x_list_2053094822601425075"
-      },
-      "outputs": {
-        "recommended_members": "data/exports/lists/x_list_2053094822601425075/recommended_members.json",
-        "members_full": "data/exports/lists/x_list_2053094822601425075/members_full.json",
-        "members_handles": "data/exports/lists/x_list_2053094822601425075/members_handles.json"
-      },
-      "member_count": 15,
+      "list_id": "2053094822601425075",
+      "name": "ash-每日重要信息",
       "handles": [
         "@juesaiquan",
         "@zzc_ae",
@@ -49,27 +22,8 @@
       ]
     },
     {
-      "schema_version": "1.0",
-      "generated_at": "2026-05-13T04:41:25+00:00",
-      "list": {
-        "list_id": "2053756758662033590",
-        "name": "陶辰-消息kol",
-        "ai_output_heading": "陶辰-消息kol",
-        "category": "陶辰-消息kol",
-        "tags": [
-          "消息",
-          "kol"
-        ],
-        "description": "陶辰-消息kol",
-        "source_url": "https://x.com/i/lists/2053756758662033590",
-        "github_dir": "x_list_members/data/exports/lists/x_list_2053756758662033590"
-      },
-      "outputs": {
-        "recommended_members": "data/exports/lists/x_list_2053756758662033590/recommended_members.json",
-        "members_full": "data/exports/lists/x_list_2053756758662033590/members_full.json",
-        "members_handles": "data/exports/lists/x_list_2053756758662033590/members_handles.json"
-      },
-      "member_count": 21,
+      "list_id": "2053756758662033590",
+      "name": "陶辰-消息kol",
       "handles": [
         "@Yuui_732",
         "@deghnl6",
