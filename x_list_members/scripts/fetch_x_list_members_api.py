@@ -158,25 +158,33 @@ def archive_existing_outputs(list_id: str, export_dir: Path, raw_dir: Path) -> P
 def write_outputs(list_id: str, members: list[dict[str, Any]], pages: list[dict[str, Any]], last_meta: dict[str, Any], archive: bool) -> None:
     raw_dir = Path("data/raw")
     export_dir = Path("data/exports")
+    list_export_dir = export_dir / "lists" / f"x_list_{list_id}"
     raw_dir.mkdir(parents=True, exist_ok=True)
     export_dir.mkdir(parents=True, exist_ok=True)
+    list_export_dir.mkdir(parents=True, exist_ok=True)
 
     prefix = f"x_list_{list_id}_members"
+    handles_json = json.dumps(get_handles(members), ensure_ascii=False, indent=2) + "\n"
+    full_json = json.dumps({"count": len(members), "members": members, "meta": last_meta}, ensure_ascii=False, indent=2) + "\n"
     archive_dir = archive_existing_outputs(list_id, export_dir, raw_dir) if archive else None
     if archive_dir:
         print(f"Archived previous outputs to {archive_dir}")
 
     (raw_dir / f"{prefix}_api_pages.json").write_text(json.dumps({"pages": pages}, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    (export_dir / "recommended_members.json").write_text(json.dumps(get_handles(members), ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    (export_dir / f"{prefix}_handles.json").write_text(json.dumps(get_handles(members), ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    (export_dir / "recommended_members.json").write_text(handles_json, encoding="utf-8")
+    (export_dir / f"{prefix}_handles.json").write_text(handles_json, encoding="utf-8")
     (export_dir / f"{prefix}_handles.txt").write_text(render_handles_txt(members), encoding="utf-8")
     (export_dir / f"{prefix}_handles.md").write_text(render_handles_md(members), encoding="utf-8")
-    (export_dir / f"{prefix}_full.json").write_text(
-        json.dumps({"count": len(members), "members": members, "meta": last_meta}, ensure_ascii=False, indent=2) + "\n",
-        encoding="utf-8",
-    )
+    (export_dir / f"{prefix}_full.json").write_text(full_json, encoding="utf-8")
     (export_dir / f"{prefix}_full.txt").write_text(render_txt(members), encoding="utf-8")
     (export_dir / f"{prefix}_full.md").write_text(render_md(members), encoding="utf-8")
+    (list_export_dir / "recommended_members.json").write_text(handles_json, encoding="utf-8")
+    (list_export_dir / "members_handles.json").write_text(handles_json, encoding="utf-8")
+    (list_export_dir / "members_handles.txt").write_text(render_handles_txt(members), encoding="utf-8")
+    (list_export_dir / "members_handles.md").write_text(render_handles_md(members), encoding="utf-8")
+    (list_export_dir / "members_full.json").write_text(full_json, encoding="utf-8")
+    (list_export_dir / "members_full.txt").write_text(render_txt(members), encoding="utf-8")
+    (list_export_dir / "members_full.md").write_text(render_md(members), encoding="utf-8")
 
 
 def main() -> int:

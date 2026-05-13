@@ -109,6 +109,14 @@ The fetch script writes:
 - `data\exports\recommended_members.json`
 - `data\exports\x_list_<list_id>_members_handles.json`
 - `data\exports\x_list_<list_id>_members_full.json`
+- `data\exports\lists\x_list_<list_id>\recommended_members.json`
+- `data\exports\lists\x_list_<list_id>\members_full.json`
+
+For multiple lists, prefer the list-specific GitHub path:
+
+```text
+https://github.com/taochen991228/grok_report/blob/main/x_list_members/data/exports/lists/x_list_<list_id>/recommended_members.json
+```
 
 ## Update Fixed GitHub Link
 
