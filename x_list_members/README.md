@@ -47,6 +47,30 @@ Output:
 
 ## Auto Fetch List Members
 
+### Official X API
+
+This is the recommended method because it uses an X Developer App Bearer Token instead of a browser cookie.
+
+Set your token for the current PowerShell session:
+
+```powershell
+$env:X_API_BEARER_TOKEN="YOUR_X_API_BEARER_TOKEN"
+```
+
+Fetch members:
+
+```powershell
+python .\scripts\fetch_x_list_members_api.py "https://x.com/i/lists/2053756758662033590"
+```
+
+Fetch and publish to the fixed GitHub link:
+
+```powershell
+powershell.exe -ExecutionPolicy Bypass -File .\scripts\update_list_and_publish.ps1 -UseOfficialApi -List "https://x.com/i/lists/2053756758662033590"
+```
+
+### Browser Cookie Fallback
+
 Create a local credentials file first:
 
 ```powershell
@@ -98,6 +122,13 @@ Run:
 
 ```powershell
 powershell.exe -ExecutionPolicy Bypass -File .\scripts\update_list_and_publish.ps1 -List "https://x.com/i/lists/2053756758662033590"
+```
+
+Official API version:
+
+```powershell
+$env:X_API_BEARER_TOKEN="YOUR_X_API_BEARER_TOKEN"
+powershell.exe -ExecutionPolicy Bypass -File .\scripts\update_list_and_publish.ps1 -UseOfficialApi -List "https://x.com/i/lists/2053756758662033590"
 ```
 
 What it does:

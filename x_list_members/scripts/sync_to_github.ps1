@@ -118,6 +118,7 @@ try {
         "config\x_headers.example.json",
         "docs\GITHUB_UPLOAD_ARCHITECTURE.md",
         "scripts\extract_x_list_members.py",
+        "scripts\fetch_x_list_members_api.py",
         "scripts\fetch_x_list_members.py",
         "scripts\update_list_and_publish.ps1",
         "scripts\sync_to_github.ps1"

@@ -2,6 +2,8 @@ param(
     [Parameter(Mandatory = $true)]
     [string]$List,
     [string]$HeadersFile = ".\config\x_headers.json",
+    [switch]$UseOfficialApi,
+    [string]$BearerToken = "",
     [int]$Count = 100,
     [int]$MaxPages = 50,
     [double]$Sleep = 1,
@@ -37,7 +39,17 @@ try {
         $CommitMessage = "update x list $listId members"
     }
 
-    python .\scripts\fetch_x_list_members.py $List --headers-file $HeadersFile --count $Count --max-pages $MaxPages --sleep $Sleep
+    if ($UseOfficialApi) {
+        $apiArgs = @(".\scripts\fetch_x_list_members_api.py", $List, "--max-results", $Count, "--max-pages", $MaxPages, "--sleep", $Sleep)
+        if ($BearerToken) {
+            $apiArgs += @("--bearer-token", $BearerToken)
+        }
+        python @apiArgs
+    }
+    else {
+        python .\scripts\fetch_x_list_members.py $List --headers-file $HeadersFile --count $Count --max-pages $MaxPages --sleep $Sleep
+    }
+
     powershell.exe -ExecutionPolicy Bypass -File .\scripts\sync_to_github.ps1 -CommitMessage $CommitMessage
 
     Write-Host "Updated fixed GitHub link:"

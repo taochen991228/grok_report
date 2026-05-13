@@ -23,6 +23,7 @@ grok_report/
       x_headers.example.json
     scripts/
       extract_x_list_members.py
+      fetch_x_list_members_api.py
       fetch_x_list_members.py
       update_list_and_publish.ps1
       sync_to_github.ps1
@@ -73,6 +74,26 @@ scripts/sync_to_github.ps1
 GitHub: taochen991228/grok_report/x_list_members
 ```
 
+## Official API Flow
+
+Recommended when you want to avoid browser cookies:
+
+```text
+X API Bearer Token
+        |
+        v
+GET https://api.x.com/2/lists/<list_id>/members
+        |
+        v
+scripts/fetch_x_list_members_api.py
+        |
+        v
+data/exports/recommended_members.json
+        |
+        v
+scripts/sync_to_github.ps1
+```
+
 ## File Naming Rules
 
 - `x_list_2053756758662033590_members_response.json`: original X GraphQL response.
@@ -97,6 +118,13 @@ Use:
 
 ```powershell
 powershell.exe -ExecutionPolicy Bypass -File .\scripts\update_list_and_publish.ps1 -List "https://x.com/i/lists/2053756758662033590"
+```
+
+Official API version:
+
+```powershell
+$env:X_API_BEARER_TOKEN="YOUR_X_API_BEARER_TOKEN"
+powershell.exe -ExecutionPolicy Bypass -File .\scripts\update_list_and_publish.ps1 -UseOfficialApi -List "https://x.com/i/lists/2053756758662033590"
 ```
 
 ## Upload Strategy
