@@ -24,6 +24,7 @@ grok_report/
     scripts/
       extract_x_list_members.py
       fetch_x_list_members.py
+      update_list_and_publish.ps1
       sync_to_github.ps1
     data/
       raw/
@@ -36,6 +37,11 @@ grok_report/
         x_list_2053756758662033590_members_full.json
         x_list_2053756758662033590_members_full.txt
         x_list_2053756758662033590_members_full.md
+      archive/
+        20260513_120000/
+          x_list_2053756758662033590/
+            recommended_members.json
+            x_list_2053756758662033590_members_handles.json
     docs/
       GITHUB_UPLOAD_ARCHITECTURE.md
 ```
@@ -56,6 +62,10 @@ data/exports/recommended_members.json
 data/exports/x_list_2053756758662033590_members_handles.*
 data/exports/x_list_2053756758662033590_members_full.*
         |
+        | archive old outputs before replacement
+        v
+data/archive/<timestamp>/x_list_2053756758662033590/
+        |
         v
 scripts/sync_to_github.ps1
         |
@@ -73,6 +83,21 @@ GitHub: taochen991228/grok_report/x_list_members
 - `x_list_2053756758662033590_members_full.json`: full extracted profile fields.
 - `x_list_2053756758662033590_members_full.txt`: readable full profile list.
 - `x_list_2053756758662033590_members_full.md`: Markdown table with profile links.
+- `data/archive/<timestamp>/x_list_<list_id>/`: previous exported version before replacement.
+
+## Fixed Latest Link
+
+Keep this link stable and always replace the file behind it with the latest list members:
+
+```text
+https://github.com/taochen991228/grok_report/blob/main/x_list_members/data/exports/recommended_members.json
+```
+
+Use:
+
+```powershell
+powershell.exe -ExecutionPolicy Bypass -File .\scripts\update_list_and_publish.ps1 -List "https://x.com/i/lists/2053756758662033590"
+```
 
 ## Upload Strategy
 

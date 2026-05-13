@@ -9,10 +9,13 @@ Do not commit your cookie/token file to GitHub.
 from __future__ import annotations
 
 import argparse
+import re
 import json
 import os
+import shutil
 import sys
 import time
+from datetime import datetime
 from pathlib import Path
 from typing import Any
 from urllib.error import HTTPError, URLError
@@ -29,6 +32,7 @@ DEFAULT_BEARER = (
     "NRILgAAAAAAnNwIzUejRCOuH5E6I8xnZz4puTs%3D1"
     "Zv7ttfk8LF81IUq16cHjhLTvJu4FA33AGWWjCpTnA"
 )
+LIST_ID_PATTERN = re.compile(r"(?:x\.com|twitter\.com)/i/lists/(\d+)|^(\d+)$")
 
 FEATURES = {
     "rweb_video_screen_enabled": False,
@@ -93,6 +97,13 @@ def parse_cookie_value(cookie: str, key: str) -> str:
         if name == key:
             return value
     return ""
+
+
+def parse_list_id(value: str) -> str:
+    match = LIST_ID_PATTERN.search(value.strip())
+    if not match:
+        raise ValueError(f"could not parse list id from: {value}")
+    return next(group for group in match.groups() if group)
 
 
 def build_headers(args: argparse.Namespace) -> dict[str, str]:
@@ -172,13 +183,40 @@ def dedupe_members(existing: list[dict[str, Any]], new_members: list[dict[str, A
     return added
 
 
-def write_outputs(list_id: str, members: list[dict[str, Any]], pages: list[dict[str, Any]], cursors: dict[str, str]) -> None:
+def archive_existing_outputs(list_id: str, export_dir: Path, raw_dir: Path) -> Path | None:
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    archive_dir = Path("data/archive") / timestamp / f"x_list_{list_id}"
+    paths = [
+        export_dir / "recommended_members.json",
+        export_dir / f"x_list_{list_id}_members_handles.json",
+        export_dir / f"x_list_{list_id}_members_handles.txt",
+        export_dir / f"x_list_{list_id}_members_handles.md",
+        export_dir / f"x_list_{list_id}_members_full.json",
+        export_dir / f"x_list_{list_id}_members_full.txt",
+        export_dir / f"x_list_{list_id}_members_full.md",
+        raw_dir / f"x_list_{list_id}_members_pages.json",
+    ]
+    existing_paths = [path for path in paths if path.exists()]
+    if not existing_paths:
+        return None
+
+    archive_dir.mkdir(parents=True, exist_ok=True)
+    for path in existing_paths:
+        shutil.copy2(path, archive_dir / path.name)
+    return archive_dir
+
+
+def write_outputs(list_id: str, members: list[dict[str, Any]], pages: list[dict[str, Any]], cursors: dict[str, str], archive: bool) -> None:
     raw_dir = Path("data/raw")
     export_dir = Path("data/exports")
     raw_dir.mkdir(parents=True, exist_ok=True)
     export_dir.mkdir(parents=True, exist_ok=True)
 
     prefix = f"x_list_{list_id}_members"
+    archive_dir = archive_existing_outputs(list_id, export_dir, raw_dir) if archive else None
+    if archive_dir:
+        print(f"Archived previous outputs to {archive_dir}")
+
     (raw_dir / f"{prefix}_pages.json").write_text(json.dumps({"pages": pages}, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     (export_dir / "recommended_members.json").write_text(json.dumps(get_handles(members), ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     (export_dir / f"{prefix}_handles.json").write_text(json.dumps(get_handles(members), ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
@@ -194,7 +232,7 @@ def write_outputs(list_id: str, members: list[dict[str, Any]], pages: list[dict[
 
 def main() -> int:
     parser = argparse.ArgumentParser(description="Fetch members from an X/Twitter list.")
-    parser.add_argument("list_id", help="X list id, for example: 2053756758662033590")
+    parser.add_argument("list", help="X list id or URL, for example: 2053756758662033590 or https://x.com/i/lists/2053756758662033590")
     parser.add_argument("--count", type=int, default=100, help="Members per request")
     parser.add_argument("--max-pages", type=int, default=50, help="Safety limit for pagination")
     parser.add_argument("--sleep", type=float, default=1.0, help="Seconds to sleep between pages")
@@ -205,7 +243,9 @@ def main() -> int:
     parser.add_argument("--csrf-token", help="X csrf token. If omitted, ct0 is read from cookie")
     parser.add_argument("--authorization", help="X authorization bearer. Defaults to public web bearer")
     parser.add_argument("--user-agent", default="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36")
+    parser.add_argument("--no-archive", action="store_true", help="Do not archive old outputs before replacing them")
     args = parser.parse_args()
+    args.list_id = parse_list_id(args.list)
 
     headers = build_headers(args)
     all_members: list[dict[str, Any]] = []
@@ -233,7 +273,7 @@ def main() -> int:
         cursor = next_cursor
         time.sleep(args.sleep)
 
-    write_outputs(args.list_id, all_members, pages, final_cursors)
+    write_outputs(args.list_id, all_members, pages, final_cursors, archive=not args.no_archive)
     print(f"Done. Exported {len(all_members)} members to data/exports")
     return 0
 

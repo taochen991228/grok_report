@@ -32,6 +32,25 @@ function Copy-ProjectFile {
     Copy-Item -LiteralPath $source -Destination $destination -Force
 }
 
+function Copy-ProjectDirectory {
+    param(
+        [string]$ProjectRoot,
+        [string]$RelativePath,
+        [string]$DestinationRoot
+    )
+
+    $source = Join-Path $ProjectRoot $RelativePath
+    if (-not (Test-Path -LiteralPath $source)) {
+        Write-Host "Skip missing: $RelativePath"
+        return
+    }
+
+    $destination = Join-Path $DestinationRoot $RelativePath
+    $destinationParent = Split-Path -Parent $destination
+    New-Item -ItemType Directory -Force -Path $destinationParent | Out-Null
+    Copy-Item -LiteralPath $source -Destination $destination -Recurse -Force
+}
+
 function Assert-InsideDirectory {
     param(
         [string]$ChildPath,
@@ -100,19 +119,22 @@ try {
         "docs\GITHUB_UPLOAD_ARCHITECTURE.md",
         "scripts\extract_x_list_members.py",
         "scripts\fetch_x_list_members.py",
-        "scripts\sync_to_github.ps1",
-        "data\raw\x_list_2053756758662033590_members_response.json",
-        "data\exports\recommended_members.json",
-        "data\exports\x_list_2053756758662033590_members_handles.json",
-        "data\exports\x_list_2053756758662033590_members_handles.txt",
-        "data\exports\x_list_2053756758662033590_members_handles.md",
-        "data\exports\x_list_2053756758662033590_members_full.json",
-        "data\exports\x_list_2053756758662033590_members_full.txt",
-        "data\exports\x_list_2053756758662033590_members_full.md"
+        "scripts\update_list_and_publish.ps1",
+        "scripts\sync_to_github.ps1"
+    )
+
+    $directoriesToUpload = @(
+        "data\raw",
+        "data\exports",
+        "data\archive"
     )
 
     foreach ($file in $filesToUpload) {
         Copy-ProjectFile -ProjectRoot $projectRoot -RelativePath $file -DestinationRoot $targetPath
+    }
+
+    foreach ($directory in $directoriesToUpload) {
+        Copy-ProjectDirectory -ProjectRoot $projectRoot -RelativePath $directory -DestinationRoot $targetPath
     }
 
     Invoke-Git add -- $TargetDir
